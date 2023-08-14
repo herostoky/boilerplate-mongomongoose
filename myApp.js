@@ -9,7 +9,7 @@ const personSchema = new mongoose.Schema({
     required: true
   },
   age: Number,
-  favoriteFoods: [{ type: String }]
+  favoriteFoods: [String]
   /*email: {
     type: String,
     required: true,
@@ -23,7 +23,16 @@ const personSchema = new mongoose.Schema({
 let Person = mongoose.model('Person', personSchema);;
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  let personEntity = new Person({
+    name: "Rakouth",
+    age: 26,
+    favoriteFoods: ["Ravitoto", "Henakisoa"]
+  });
+  personEntity.save(function(err, data) {
+    if (err) return console.error(err);
+    done(null, data)
+  });
+  done(null, personEntity);
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
