@@ -32,11 +32,24 @@ const createAndSavePerson = (done) => {
     if (err) return console.error(err);
     done(null, data)
   });
-  done(null, personEntity);
 };
 
+let rakouth = new Person({
+  name: "Rakouth",
+  age: 26,
+  favoriteFoods: ["Ravitoto", "Henakisoa"]
+});
+let rabe = new Person({
+  name: "Rabe",
+  age: 25,
+  favoriteFoods: ["Hena", "Voatabia"]
+});
+let arrayOfPeople = [rakouth, rabe];
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, function(err, data) {
+    if (err) return console.error(err);
+    done(null, data)
+  });
 };
 
 const findPeopleByName = (personName, done) => {
