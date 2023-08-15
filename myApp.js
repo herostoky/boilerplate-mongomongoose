@@ -126,13 +126,13 @@ const queryChain = (done) => {
   const foodToSearch = "burrito";
   let query = { favoriteFoods: foodToSearch };
   Person.find(query)
-  .sort({ name: 1 }) // Here: 1 for ascending
-  .limit(2)
-  .select({ age: 0 })
-  .exec(function(err, data) {
-    if (err) return console.error(err);
-    done(null, data)
-  });
+    .sort({ name: 1 }) // Here: 1 for ascending
+    .limit(2)
+    .select({ age: 0 })
+    .exec(function(err, data) {
+      if (err) return console.error(err);
+      done(null, data)
+    });
 };
 
 /** **Well Done !!**
